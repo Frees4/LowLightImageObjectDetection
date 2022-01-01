@@ -43,7 +43,7 @@ The results show that mAP higher with adjusting gamma approach, object detection
 Histogram Equalization is an image processing technique that adjusts the contrast of an image by using its histogram. To enhance the image’s contrast, it spreads out the most frequent pixel intensity values or stretches out the intensity range of the image. By accomplishing this, histogram equalization allows the image’s areas with lower contrast to gain a higher contrast.
 | Image | Histogram |
 |:----:|:----:|
-| ![Bicycle](images/bicycle.jpg) | ![BicycleHistogram](images/bicycleHistogram.jpg) |
+| ![BicycleGray](images/bicycleGray.jpg) | ![BicycleHistogram](images/bicycleHistogram.jpg) |
 | ![BicycleHistogramEqualize](images/bicycleHistogramEqualization.jpg) | ![BicycleEqualizedHistogram](images/bicycleEqualizedHistogram.jpg) |
 
 For colored RGB image we can't equalize each channel separately. Equalization involves Intensity values of the image not the color components. We can do it without disturbing the color balance of the image. We separate intensity values from color components by converting to [YCbCr](https://en.wikipedia.org/wiki/YCbCr) color space. And equalize intensity Y channel. It works well for exclusively dark images without many bright colours.
@@ -61,5 +61,10 @@ For result that we have you can use gamma = 2.0.
 | ![Bicycle](images/bicycle.jpg) | ![BicycleAdjustingGamma](images/bicycleAdjustingGamma.jpg) |
 ## Dataset
 The Exclusively Dark (ExDARK) dataset is a collection of 7,363 low-light images from very low-light environments to twilight (i.e 10 different conditions) with 12 object classes.
+
 Class names: Bicycle, Boat, Bottle, Bus, Car, Cat, Chair, Cup, Dog, Motorbike, People, Table.
 [More information and downloading:](https://github.com/cs-chan/Exclusively-Dark-Image-Dataset)
+## Conclusion
+We can easily improve our image detector with low light images without GAN neural networks and it will not hit the speed of the detector.
+
+We managed to improve mean average precision of the algorithm by 3.14% (+0.018 mAP) by adjusting gamma approach.
