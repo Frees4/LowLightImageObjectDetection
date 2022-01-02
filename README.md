@@ -21,7 +21,7 @@ Base images have not changed.
 | Base | ![BaseF1](images/baseF1_curve.png) |
 | HistogramEqualization | ![HEF1](images/histogramEqualizationF1_curve.png) | 
 | AdjustingGamma | ![AGF1](images/adjustingGammaF1_curve.png) |
-
+Results after 100 epochs
 | | train/box_loss | train/obj_loss | train/cls_loss | metrics/precision | metrics/recall | metrics/mAP_0.5 | metrics/mAP_0.5:0.95 | val/box_loss | val/obj_loss | val/cls_loss,| x/lr0 | x/lr1 | x/lr2 |
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 | Base |0.047642|0.031714|0.015637|0.72011|0.50394|0.57431|0.30854|0.053307|0.02291|0.019558|0.0010089|0.0010089|0.0010089|
@@ -46,7 +46,7 @@ Histogram Equalization is an image processing technique that adjusts the contras
 | ![BicycleGray](images/bicycleGray.jpg) | ![BicycleHistogram](images/bicycleHistogram.jpg) |
 | ![BicycleHistogramEqualize](images/bicycleHistogramEqualization.jpg) | ![BicycleEqualizedHistogram](images/bicycleEqualizedHistogram.jpg) |
 
-For colored RGB image we can't equalize each channel separately. Equalization involves Intensity values of the image not the color components. We can do it without disturbing the color balance of the image. We separate intensity values from color components by converting to [YCbCr](https://en.wikipedia.org/wiki/YCbCr) color space. And equalize intensity Y channel. It works well for exclusively dark images without many bright colours.
+For colored RGB image we shouldn't equalize each channel separately. Equalization involves Intensity values of the image not the color components. We can do it without disturbing the color balance of the image. We separate intensity values from color components by converting to [YCbCr](https://en.wikipedia.org/wiki/YCbCr) color space. And equalize intensity Y channel. It works well for exclusively dark images without many bright colours.
 
 ### Adjusting Gamma
 Approach based on gamma correction of an image. We use LUT(LookUp Table) with parameter O equals image / 255 to extent of 1/gamma and multiply by 255. 
@@ -63,8 +63,9 @@ For result that we have you can use gamma = 2.0.
 The Exclusively Dark (ExDARK) dataset is a collection of 7,363 low-light images from very low-light environments to twilight (i.e 10 different conditions) with 12 object classes.
 
 Class names: Bicycle, Boat, Bottle, Bus, Car, Cat, Chair, Cup, Dog, Motorbike, People, Table.
+
 [More information and downloading:](https://github.com/cs-chan/Exclusively-Dark-Image-Dataset)
 ## Conclusion
-We can easily improve our image detector with low light images without GAN neural networks and it will not hit the speed of the detector.
+We can easily improve our object detector with low light images without GAN neural networks and it will not hit the speed of the detector.
 
 We managed to improve mean average precision of the algorithm by 3.14% (+0.018 mAP) by adjusting gamma approach.
